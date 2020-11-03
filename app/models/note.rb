@@ -1,4 +1,4 @@
 class Note < ApplicationRecord
-     belongs_to :medication
-     belongs_to :patient, :through => medications
+    belongs_to :medication
+     
 end
