@@ -1,4 +1,4 @@
 class Medication < ApplicationRecord
-     belongs_to :patient
-     has_many :notes
+     has_many :illnesses
+     has_many :patients :through => :illnesses
 end
