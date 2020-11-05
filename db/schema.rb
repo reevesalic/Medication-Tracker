@@ -12,17 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2020_11_03_151750) do
 
-  create_table "medications", force: :cascade do |t|
+  create_table "medical_issues", force: :cascade do |t|
     t.string "name"
-    t.string "quantity"
-    t.string "frequency"
-    t.string "illness"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.text "comments"
+  create_table "medications", force: :cascade do |t|
+    t.string "name"
+    t.string "quantity"
+    t.string "frequency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
