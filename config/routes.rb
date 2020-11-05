@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  post '/login' => 'sessions#create'
  get '/signup' => 'users#new'
  post '/signup' => 'users#create'
- 
+ get '/auth/:provider/callback' => 'sessions#omniauth'
   resources :illness
   resources :medications
   resources :patients
