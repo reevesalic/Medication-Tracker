@@ -2,15 +2,19 @@
 
 <%= form_for(@patient) do |f| %> 
 
-<%= f.label :name %>
+<%= f.label :name, "Patient Name" %>
 <%= f.text_field :name %>
-<br>
-<br>
-<p> Add a medication for the patient</p>
+<br><br><br>
+
+<h3> Add a medication for the patient</h3>
 <div> 
+<p>Select a medication or create a new one</p>
 <%=f.fields_for :medications do |m| %>
-<%= m.label :name %>
-<%= m.text_field :name %>
+<%= m.label :name, "Medication Name" %>
+<%= m.collection_select :name_id, Medication.all, :id, :name, prompt: true%>
+
+<p>Create a new medication</p>
+f.fields_for :medication
 <br>
 <br>
 <%= m.label :quantity %>

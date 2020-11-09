@@ -1,36 +1,48 @@
+# require 'pry'
 class PatientsController < ApplicationController
+before_action :set_patient, only: [:show, :edit, :update, :delete]
 
-     def new
-      @patient = Patient.new
-     #  @patient.medication_build
-end
+  def new
+     @patient = Patient.new
+  end
 
-def create
-     
-    
-     @patient = Patient.new(patient_params)
-     @patient.user_id = session[:user_id]
-#      @patient.user_id = session[:user_id]
-
-    if @patient.save! #this is where validations happen
-#      #  @patient.image.purge
-#      #  @patient.image.attach(params[:ice_cream][:image])
-     #  redirect_to patient_path(@patient)
-#     else
-#      #  @patient.build_medication
+  def create
+  # byebug
+    @patient = current_user.patients.build(patient_params)
+    if @patient.save
+      redirect_to patient_path(@patient)
+    else
       render :new
     end
   end
 
-#   private
+  def index
 
-#   def patient_params
-#     params.require(:patient).permit(:name, :frequency, quantity: [:name])
-#   end
+  end
 
-#   def set_ice_cream
-#      @ice_cream = IceCream.find_by(params[:id])
-#      redirect_to ice_creams_path if !@ice_cream
-#   end
+  def update
+
+  end
+
+  def show
+
+  end
+
+  # def destroy
+  #   @patient.destroy
+  #   redirect_to_patients_path
+ 
+  # end
+
+  private
+
+  def patient_params
+    params.require(:patient).permit(:name, :frequency, quantity: [:name])
+  end
+
+  def set_patient
+    @patient = Patient.find_by_id(params[:id])
+    redirect_to patients_path if !@patient
+  end
 
 end

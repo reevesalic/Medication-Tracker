@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 2020_11_03_151750) do
 
   create_table "illnesses", force: :cascade do |t|
     t.string "name"
+    t.integer "medication_id"
+    t.integer "patient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_151750) do
 
   create_table "patients", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
