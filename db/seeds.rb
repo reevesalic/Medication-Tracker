@@ -11,3 +11,5 @@ Medication.create(name: 'Synthroid')
 Medication.create(name: 'Albuterol')
 Medication.create(name: 'Azelastine')
 Medication.create(name: 'Pantoprazole')
+
+User.create(email: 'welleralic@gmail.com')
