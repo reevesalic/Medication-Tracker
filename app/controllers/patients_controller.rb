@@ -7,7 +7,7 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   end
 
   def create
-  # byebug
+  
     @patient = current_user.patients.build(patient_params)
     if @patient.save
       redirect_to patient_path(@patient)

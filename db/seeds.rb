@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Medication.create(name: 'Singulair')
+Medication.create(name: 'Synthroid')
+Medication.create(name: 'Albuterol')
+Medication.create(name: 'Azelastine')
+Medication.create(name: 'Pantoprazole')

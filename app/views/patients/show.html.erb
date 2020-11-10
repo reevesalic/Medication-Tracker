@@ -1,9 +1,32 @@
 <h1>show patients</h1>
 <%= @patient.name %>
-<% byebug %>%
-<%= @patient.medication.name %>
-# <%# <% if @patient.user == current_user %>
-<%# <% link_to "Edit Patient", edit_patient_path(@patient)%>
- <%# <%= link_to "Delete Patient", patient_path(@patient), method: :delete  %> 
+ <%# <%=f.fields_for :medication do |m| %>
+  <%# <% m.label :name %> 
+  <%# <% m.text_field :name %> 
+  <%# <% end %> 
 
- <%# <% end %>
+<%# <% @medications.each do |medication| %>
+    <%# <li><%= @medication.patient.name%></li>
+<%# <%= if @patient.medications %>
+<%# <%medications.each do |medication| %>
+
+<%# <%=f.fields_for :medications do |medication| %>
+<%# <%= f.form_for(@medication) do |m|  %> 
+<%# <% @patient.medication.name %> 
+<%# <% if @patient.user == current_user %>
+ <%# <% end %> 
+  <%# <% end %> 
+
+
+
+
+
+
+<%# #<% <% link_to "Edit Patient", edit_patient_path(@patient)%> 
+<%# <%= link_to "Delete Patient", patient_path(@patient), method: :delete  %>  
+<%# <% end %> 
+ <%# <% end %> 
+
+
+  <%# <% end %> 
+  
