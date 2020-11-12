@@ -29,15 +29,15 @@ class SessionsController < ApplicationController
           user.username = auth["info"]["name"]
           user.email = auth['info']['email']
           user.password = SecureRandom.hex(10)
-          redirect_to '/'
+          redirect_to patients_path
         end
-      end
-      # if @user.save
-      #   session[:user_id] = @user.id
-      #   redirect_to user_path(@user)
-      # else
-      #   redirect_to '/'
       # end
+     
+        # session[:user_id] = @user.id
+        # redirect_to user_path(@user)
+      
+        # redirect_to '/'
+      end
         private
       
         def auth
