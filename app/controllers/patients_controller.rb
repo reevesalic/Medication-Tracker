@@ -1,13 +1,14 @@
-# require 'pry'
+require 'pry'
 class PatientsController < ApplicationController
 before_action :set_patient, only: [:show, :edit, :update, :delete]
 
   def new
      @patient = Patient.new
+     @patient.medications.build
   end
 
   def create
-  byebug
+  binding.pry
     @patient = current_user.patients.build(patient_params)
     if @patient.save
       redirect_to patient_path(@patient)
@@ -37,7 +38,7 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :frequency, quantity: [:name])
+    params.require(:patient).permit(:name, medications_attributes: [:name, :quantity, :frequency, illnesses_attributes: [:illness]])
   end
 
   def set_patient
