@@ -1,0 +1,15 @@
+<h1><%= title %></h1>
+
+
+
+
+<%= form_for(@patient) do |f| %> 
+
+  <%= f.label :name, "Patient Name" %>
+  <%= f.text_field :name %>
+  
+
+  <br>
+    <br>
+  <%= f.submit %>
+<% end %>

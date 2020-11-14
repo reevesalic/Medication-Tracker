@@ -1,6 +1,6 @@
 require 'pry'
 class PatientsController < ApplicationController
-before_action :set_patient, only: [:show, :edit, :update, :delete]
+before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def new
      @patient = Patient.new
@@ -18,27 +18,28 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   end
 
   def index
-    Patient.all
+    @patients = Patient.all
   end
 
   def update
-
+    @patient.update(patient_params)
+    redirect_to patient_path(@patient)
   end
 
   def show
   
   end
 
-  # def destroy
-  #   @patient.destroy
-  #   redirect_to_patients_path
- 
-  # end
+  def destroy
+    
+    @patient.destroy
+    redirect_to patients_path, notice: 'The patient was successfully deleted.'
+  end
 
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :illness)
+    params.require(:patient).permit(:name)
   end
 
   def set_patient

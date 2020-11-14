@@ -1,23 +1,8 @@
-<h1>Add a new patient</h1>
 
-<%= form_for(@patient) do |f| %> 
-
-  <%= f.label :name, "Patient Name" %>
-  <%= f.text_field :name %>
-  <br><br><br>
-<%# 
-      <h4>Illness</h4>
-      <%=f.fields_for :illnesses_attributes do |i| %>
-      <%# <% i.label :illness %> 
-      <%# <% i.text_field :illness %> 
-    <%# <% end %> 
-    
+    <%= render 'form', title: "Add a New Patient" %>
 
     
-    <br>
-    <br>
-  <%= f.submit "Add a patient" %>
-<% end %>
+    
 
 
 
