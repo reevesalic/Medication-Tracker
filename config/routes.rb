@@ -6,9 +6,10 @@ Rails.application.routes.draw do
  post '/signup' => 'users#create'
  delete '/logout' => 'sessions#destroy'
  get '/auth/:provider/callback' => 'sessions#omniauth'
-  resources :illness
+  
   resources :medications
   resources :patients
+  resources :illnesses
   resources :users
   resources :session
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

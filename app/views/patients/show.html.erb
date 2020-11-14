@@ -1,15 +1,15 @@
 <h1>show patients</h1>
 <%= @patient.name %>
-<%# <% byebug %>
-<% if @patient.medications %>
-  <% @patient.medications.each do |medication| %>
-    <%= medication.name %>
-  <% end %>
-<% end %>
 
-<%= @patient.medications %>
+ <%# <% if @patient.illnesses %>
+  <%# @patient.illnesses.each do |illness| %> 
+    <%# <%= illness.name %>
+  <%# <% end %> 
+<%# <% end %>
 
-<%# #<% <% link_to "Edit Patient", edit_patient_path(@patient)%> 
+<%# <%= @patienet.illnesses %>
+
+<% link_to "Edit Patient", edit_patient_path(@patient) %> 
 <%# <%= link_to "Delete Patient", patient_path(@patient), method: :delete  %>  
  
   

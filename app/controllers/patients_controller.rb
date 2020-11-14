@@ -4,11 +4,11 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
 
   def new
      @patient = Patient.new
-     @patient.medications.build
+     @patient.illnesses.build
   end
 
   def create
-  binding.pry
+  
     @patient = current_user.patients.build(patient_params)
     if @patient.save
       redirect_to patient_path(@patient)
@@ -26,7 +26,7 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   end
 
   def show
-
+  
   end
 
   # def destroy
@@ -38,7 +38,7 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   private
 
   def patient_params
-    params.require(:patient).permit(:name, medications_attributes: [:name, :quantity, :frequency, illnesses_attributes: [:illness]])
+    params.require(:patient).permit(:name, :illness)
   end
 
   def set_patient
