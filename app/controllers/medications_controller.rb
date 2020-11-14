@@ -32,7 +32,8 @@ class MedicationsController < ApplicationController
   
   def medication_params
     params.require(:medication).permit(
-    :user_id,
+    :user_id, 
+    :patient_id,
     :medication_name,
     
     )
