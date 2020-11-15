@@ -1,13 +1,13 @@
 <h1>show patients</h1>
 <%= @patient.name %>
 
- <%# <% if @patient.illnesses %>
-  <%# @patient.illnesses.each do |illness| %> 
-    <%# <%= illness.name %>
-  <%# <% end %> 
-<%# <% end %>
+ <% if @patient.illnesses %>
+ <% @patient.illnesses.each do |illness| %> 
+    <%= illness.name %> 
+  <% end %> 
+<% end %>
 
-<%# <%= @patienet.illnesses %>
+<%= @patient.illnesses %>
 
 <%= link_to "Edit Patient", edit_patient_path(@patient) %> 
 <%= link_to "Delete Patient", patient_path(@patient), method: :delete %>

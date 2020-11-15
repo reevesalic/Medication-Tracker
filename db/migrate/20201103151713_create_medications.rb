@@ -4,6 +4,7 @@ class CreateMedications < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :quantity
       t.string :frequency
+      t.integer :patient_id
       
 
       t.timestamps

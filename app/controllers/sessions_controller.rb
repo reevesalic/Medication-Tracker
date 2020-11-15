@@ -31,12 +31,7 @@ class SessionsController < ApplicationController
           user.password = SecureRandom.hex(10)
           redirect_to patients_path
         end
-      # end
-     
-        # session[:user_id] = @user.id
-        # redirect_to user_path(@user)
       
-        # redirect_to '/'
       end
         private
       

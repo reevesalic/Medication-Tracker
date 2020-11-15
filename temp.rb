@@ -21,9 +21,9 @@
 </div>
 <br>
 
-<%# 
+
       <h4>Illness</h4>
-      <%=f.fields_for :illnesses_attributes do |i| %>
-      <%# <% i.label :illness %> 
-      <%# <% i.text_field :illness %> 
-    <%# <% end %> 
+      <%= f.fields_for :illnesses_attributes do |i| %>
+      <%= i.label :illness %> 
+      <%= i.text_field :illness %> 
+    <% end %> 
