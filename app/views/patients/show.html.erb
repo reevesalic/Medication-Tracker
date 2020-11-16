@@ -1,17 +1,18 @@
 <h1>show patients</h1>
-<%= @patient.name %>
+  <%= @patient.name %>
 
- <% if @patient.illnesses %>
- <% @patient.illnesses.each do |illness| %> 
-    <%= illness.name %> 
-  <% end %> 
-<% end %>
-
-<%= @patient.illnesses %>
-<br>
-<br>
-<%= link_to "Edit Patient", edit_patient_path(@patient) %> 
-<%= link_to "Delete Patient", patient_path(@patient), method: :delete %>
+   <% if @patient.illnesses %>
+      <% @patient.illnesses.each do |illness| %> 
+      <%= @illness.name %> 
+      <% end %> 
+   <% end %>
  
+
+<%# <%= @patient.illnesses  -- THIS LINE OF CODE IS CAUSING THE ACTIVERECORD ERROR %>
+  <br>
+  <br>
+  <%= link_to "Edit Patient", edit_patient_path(@patient) %> 
+  <%= link_to "Delete Patient", patient_path(@patient), method: :delete %>
+  
   
   

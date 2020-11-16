@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-     def welcome
-     end
+    def welcome
+    end
 
     def  destroy
       session.delete(:user_id)
@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
       else
         flash[:error] = "Sorry, please try again."
         redirect_to login_path
-
       end
     
     end
@@ -35,7 +34,7 @@ class SessionsController < ApplicationController
       end
         private
       
-        def auth
-          request.env['omniauth.auth']
-        end
+      def auth
+        request.env['omniauth.auth']
+      end
 end

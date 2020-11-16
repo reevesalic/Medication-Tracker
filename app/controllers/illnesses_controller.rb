@@ -3,7 +3,7 @@ class IllnessesController < ApplicationController
      before_action :set_illness, only: [:show, :edit, :update, :destroy]
 
      def new
-          @illness = Illness.new
+       @illness = Illness.new
      end
     
    
@@ -11,7 +11,6 @@ class IllnessesController < ApplicationController
      
        @illness = current_user.illnesses.build(illness_params)
        if @illness.save
-         
          redirect_to illness_path(@illness)
        else
          render :new
@@ -39,14 +38,11 @@ class IllnessesController < ApplicationController
      end
    
      def destroy
-       
        @illness.destroy
        redirect_to illnesses_path
      end
    
      private
-   
-     
    
      def illness_params
        params.require(:illness).permit(:illness)
@@ -57,7 +53,4 @@ class IllnessesController < ApplicationController
        redirect_to illnesses_path if !@patient
      end
    end
-   
-   
-
 end

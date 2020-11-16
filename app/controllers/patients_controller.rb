@@ -51,9 +51,9 @@ before_action :set_patient, only: [:show, :edit, :update, :destroy]
       # , illnesses_attributes: [:illness])
   end
 
-  # def illness_params
-  #   params.require(:illness).permit(:illness)
-  # end
+  def illness_params
+    params.require(:illness).permit(:illness)
+  end
 
   def set_patient
     @patient = Patient.find_by_id(params[:id])
