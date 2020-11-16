@@ -5,15 +5,15 @@ class IllnessesController < ApplicationController
      def new
        @illness = Illness.new
      end
-    
+     
    
      def create
      
        @illness = current_user.illnesses.build(illness_params)
        if @illness.save
-         redirect_to illness_path(@illness)
+         redirect_to patient_illness_path(@patient, @illness)
        else
-         render :new
+         redirect_to new_patient_illness_path(@patient)
        end
      end
    
@@ -23,23 +23,25 @@ class IllnessesController < ApplicationController
    
      def update
        @illness.update(illness_params)
-       redirect_to illness_path(@illness)
+       redirect_to patient_illness_path(@patient, @illness)
      end
    
      def show
+          binding.pry
        @illness = Illness.find_by(id: params[:id])
        if @illness
+          
          if current_user.id != @illness.user_id
-           redirect_to illnesses_path(session[:current_user])
+           redirect_to patient_illnesses_path(session[:current_user])
          end
        else
-         redirect_to illnesses_path
+          redirect_to patient_illness_path(@patient)
        end
      end
    
      def destroy
        @illness.destroy
-       redirect_to illnesses_path
+       redirect_to patient_illnesses_path(@patient)
      end
    
      private
@@ -50,7 +52,6 @@ class IllnessesController < ApplicationController
    
      def set_illness
        @illness = Illness.find_by_id(params[:id])
-       redirect_to illnesses_path if !@patient
+       redirect_to patient_illnesses_path(@patient) if !@illness
      end
    end
-end

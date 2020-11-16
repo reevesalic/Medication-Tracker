@@ -8,8 +8,9 @@ Rails.application.routes.draw do
  get '/auth/:provider/callback' => 'sessions#omniauth'
   
   resources :medications
-  resources :patients
-  resources :illnesses
+  resources :patients do
+    resources :illnesses
+  end
   resources :users
   resources :session
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

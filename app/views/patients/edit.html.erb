@@ -1,6 +1,18 @@
- <div>
-<%= link_to "Log Out", logout_path, method: :delete %>
-<%= link_to "Add a new patient", new_patient_path%>
-</div>
 
-<%= render 'form', title: "Edit the Patient" %>
+<%= render 'web_links' %>
+<%# <%= render 'form', title: "Edit the Patient" %>
+
+<%= form_for(@patient) do |f| %> 
+
+  <%= f.label :name, "Patient Name" %>
+  <%= f.text_field :name %>
+  
+ <h4>Illness</h4>
+      <%= f.fields_for :illnesses_attributes do |i| %>
+      <%= i.label :illness %> 
+      <%= i.text_field :illness %> 
+    <% end %> 
+  <br>
+    <br>
+  <%= f.submit %>
+<% end %>
