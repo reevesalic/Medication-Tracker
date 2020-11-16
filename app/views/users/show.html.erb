@@ -1,2 +1,8 @@
-Welcome <%= @user.name %> 
 
+
+ <div>
+<%= link_to "Log Out", logout_path, method: :delete %>
+<%= link_to "Add a new patient", new_patient_path%>
+</div>
+<br>
+Welcome <%= @user.name %> 

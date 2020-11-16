@@ -24,7 +24,7 @@ before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def update
     @patient.update(patient_params)
-    redirect_to patient_path(@patient)
+    redirect_to patients_path(session[:current_user])
   end
 
   def show

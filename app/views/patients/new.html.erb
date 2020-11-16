@@ -1,4 +1,9 @@
-    <%= render 'form', title: "Add a New Patient" %>
+    <div>
+<%= link_to "Log Out", logout_path, method: :delete %>
+<%= link_to "Add a new patient", new_patient_path%>
+</div>
+   
+   <%= render 'form', title: "Add a New Patient" %>
 
     
     
