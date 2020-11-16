@@ -4,7 +4,7 @@ before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def new
      @patient = Patient.new
-     @review = @patient.illnesses.build
+     @illness = @patient.illnesses.build
   end
 
   def create
