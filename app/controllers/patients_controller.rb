@@ -8,9 +8,9 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
    @medications = Medication.all
   end
   def create
-    # binding.pry
+    
     @patient = current_user.patients.new(patient_params)
-    # binding.pry
+    
     if @patient.save
       redirect_to patient_path(@patient)
     else
@@ -18,11 +18,12 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
     end
   end
   def index
-    Patient.all
+    @patients = Patient.all
   end
   def update
   end
   def show
+
   end
   # def destroy
   #   @patient.destroy
@@ -30,9 +31,9 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   # end
   private
   def patient_params
-    params.require(:patient).permit(:name, illnesses_attributes: [:illness, :medication_id, medications_attributes: [:name, :frequency, :quantity]])
+    params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medications_attributes: [:name, :frequency, :quantity]])
   end
-  # , medication_attributes: [:name, :quantity, :frequency]
+  
   def set_patient
     @patient = Patient.find_by_id(params[:id])
     redirect_to patients_path if !@patient

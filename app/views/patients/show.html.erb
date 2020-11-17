@@ -1,12 +1,12 @@
 <%= render 'web_links' %>
 
-<h1>show patients</h1>
-<% @patients.each do |patient|%>
-  <%= patient.name %>
-<% patient.illnesses.each do |illness| %>
-<%= link_to illness, patient_illness_path(illness.patient, illness)%>
+<h1>show patient</h1>
+
+  <%= @patient.name %>
+<% @patient.illnesses.each do |illness| %>
+<%= link_to illness.illness, patient_illness_path(illness.patient, illness)%>
 <% end %>
- <% end %>
+ 
  
 
   <br>

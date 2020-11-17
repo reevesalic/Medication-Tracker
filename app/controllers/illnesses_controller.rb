@@ -27,7 +27,7 @@ class IllnessesController < ApplicationController
      end
    
      def show
-          binding.pry
+         
        @illness = Illness.find_by(id: params[:id])
        if @illness
           
@@ -47,7 +47,7 @@ class IllnessesController < ApplicationController
      private
    
      def illness_params
-       params.require(:illness).permit(:illness)
+       params.require(:illness).permit(:illness, :patient_id, :medication_id, medications_attributes: [:name, :frequency, :quantity])
      end
    
      def set_illness
