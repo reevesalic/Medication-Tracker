@@ -1,16 +1,13 @@
-<div>
-<%= link_to "Log Out", logout_path, method: :delete %>
-<%= link_to "Add a new patient", new_patient_path%>
-</div>
+<%= render 'web_links' %>
 
 <h1>show patients</h1>
-<% @patient.each do |patient|%>
+<% @patients.each do |patient|%>
   <%= patient.name %>
 <% patient.illnesses.each do |illness| %>
 <%= link_to illness, patient_illness_path(illness.patient, illness)%>
 <% end %>
  <% end %>
-
+ 
 
   <br>
   <br>
