@@ -11,6 +11,12 @@
       <%= i.text_field :illness %> 
     <% end %> 
   <br>
+
+  <h4>Medication</h4>
+      <%= f.fields_for :medications_attributes do |i| %>
+      <%= i.label :medication %> 
+      <%= i.text_field :medication %> 
+    <% end %>
     <br>
   <%= f.submit %>
 <% end %>

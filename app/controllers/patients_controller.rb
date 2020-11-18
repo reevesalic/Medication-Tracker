@@ -25,10 +25,12 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   def show
 
   end
-  # def destroy
-  #   @patient.destroy
-  #   redirect_to_patients_path
-  # end
+  def destroy
+    @patient.destroy.all(:patient_name, :illness, :medication_name)
+    # @illness.destroy
+    # @medication.destroy
+    redirect_to_patients_path
+  end
   private
   def patient_params
     params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medications_attributes: [:name, :frequency, :quantity]])

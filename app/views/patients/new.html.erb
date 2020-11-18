@@ -2,29 +2,29 @@
    
    <%# <%= render 'form', title: "Add a New Patient" %>
 <h1>Add a new patient</h1>
-<%= form_with(model: @patient, local: true) do |f| %> 
-  <%= f.label :name, "Patient Name" %>
-  <%= f.text_field :name %>
-  <br><br><br>
-   <%= f.label :name, "Medication Name" %>
-   <%= f.collection_select :medication_id, Medication.all, :id, :name, prompt: true %>
+    <%= form_with(model: @patient, local: true) do |f| %> 
+    <%= f.label :name, "Patient Name" %>
+    <%= f.text_field :name %>
+    <br><br><br>
+   
   <div> 
     <%= f.fields_for :illnesses do |i|%>
-      <%# should be like description  %> 
       <%= i.label :illness, "Illness Description"%>
       <%= i.text_field :illness %> 
 
-      
-      <%= i.label :medication_id, 'Medication'%>
-      <% binding.pry %>
-      <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %>
-      <h4>Or create a new medication</h4>
-      <%= i.fields_for :medications do |m| %>
-        <%= m.text_field :name %>
-        <%= m.number_field :frequency %>
-        <%= m.number_field :quantity %>
+      <h4>Select a medication from the drop down or create a new medication</h4>
+        <%= f.label :name, "Medication Name" %>
+        <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %>
+        <%= i.label :medication_id, 'Medication'%>
+        <%= i.fields_for :medications do |m| %>
+        <%= m.text_field :name %><br><br>
+        
+          <%= i.label :frequency, "Frequency"%>
+          <%= m.number_field :frequency %>
+          <%= i.label :quantity, "Quantity"%>
+          <%= m.number_field :quantity %>
       <% end %>
-      <%# <%= i.fields_for :medication_attributes do |m| %>
+      
   <% end %>
     <br>
     <br>

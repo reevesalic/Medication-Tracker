@@ -27,3 +27,24 @@
       <%= i.label :illness %> 
       <%= i.text_field :illness %> 
     <% end %> 
+
+    <%# 
+<%= form_for(@patient) do |f| %> 
+  <%# <%= f.label :name, "Patient Name" %> %>
+  <%# <%= f.text_field :name %>
+  
+ <h4>Illness</h4>
+      <%= f.fields_for :illnesses_attributes do |i| %>
+      <%= i.label :illness %> 
+      <%= i.text_field :illness %> 
+    <% end %> 
+  <br>
+
+  <h4>Medication</h4>
+      <%= f.fields_for :medications_attributes do |i| %>
+      <%= i.label :medication %> 
+      <%= i.text_field :medication %> 
+    <% end %>
+    <br>
+  <%= f.submit %>
+<% end %> %> %>

@@ -1,18 +1,3 @@
 
 <%= render 'web_links' %>
-<%= render 'form', title: "Edit the Patient"
-
-<%= form_for(@patient) do |f| %> 
-
-  <%= f.label :name, "Patient Name" %>
-  <%= f.text_field :name %>
-  
- <h4>Illness</h4>
-      <%= f.fields_for :illnesses_attributes do |i| %>
-      <%= i.label :illness %> 
-      <%= i.text_field :illness %> 
-    <% end %> 
-  <br>
-    <br>
-  <%= f.submit %>
-<% end %>
+<%= render 'form', title: "Edit the Patient" %>

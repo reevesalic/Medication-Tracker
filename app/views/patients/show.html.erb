@@ -4,9 +4,11 @@
 
   <%= @patient.name %>
 <% @patient.illnesses.each do |illness| %>
-<%= link_to illness.illness, patient_illness_path(illness.patient, illness)%>
+<%= illness.illness %>
+<%# <% @patient.illnesses.medications.each do |illness| %>
+<%# <%= medication.name %> 
 <% end %>
- 
+ <%# <% end %>
  
 
   <br>
