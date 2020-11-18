@@ -16,7 +16,7 @@
         <%= f.label :name, "Medication Name" %>
         <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %>
         <%= i.label :medication_id, 'Medication'%>
-        <%= i.fields_for :medications do |m| %>
+        <%= i.fields_for :medication do |m| %>
         <%= m.text_field :name %><br><br>
         
           <%= i.label :frequency, "Frequency"%>

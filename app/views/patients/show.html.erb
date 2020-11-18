@@ -5,10 +5,10 @@
   <%= @patient.name %>
 <% @patient.illnesses.each do |illness| %>
 <%= illness.illness %>
-<%# <% @patient.illnesses.medications.each do |illness| %>
-<%# <%= medication.name %> 
+
+ <%= illness.medication.name %>
 <% end %>
- <%# <% end %>
+ 
  
 
   <br>

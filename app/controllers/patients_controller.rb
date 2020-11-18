@@ -14,6 +14,8 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
     if @patient.save
       redirect_to patient_path(@patient)
     else
+      
+      @medications = Medication.all
       render :new
     end
   end
@@ -33,7 +35,7 @@ before_action :set_patient, only: [:show, :edit, :update, :delete]
   end
   private
   def patient_params
-    params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medications_attributes: [:name, :frequency, :quantity]])
+    params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity]])
   end
   
   def set_patient
