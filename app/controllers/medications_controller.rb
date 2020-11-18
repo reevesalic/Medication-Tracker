@@ -1,6 +1,6 @@
 class MedicationsController < ApplicationController
 
-     before_action :authenticate_user!
+  before_action :authenticate_user!
   
   def index
     @medications = current_user.medications.all
@@ -16,7 +16,7 @@ class MedicationsController < ApplicationController
     @medication = Medication.new(medication_params)
     @medication.user = current_user
     if @medication.save
-    redirect_to medications_path, notice: 'Your medication was successfully created.'
+      redirect_to medications_path, notice: 'Your medication was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,6 @@ class MedicationsController < ApplicationController
     :name,
     :quantity,
     :frequency
-    
-    )
+   )
   end
 end

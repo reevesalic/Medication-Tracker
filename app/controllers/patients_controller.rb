@@ -1,38 +1,41 @@
 require 'pry'
 class PatientsController < ApplicationController
-before_action :set_patient, only: [:show, :edit, :update, :delete]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy]
   def new
-   @patient = Patient.new
-   @illness = @patient.illnesses.build
-   @medication = @illness.build_medication
-   @medications = Medication.all
+    @patient = Patient.new
+    @illness = @patient.illnesses.build
+    @medication = @illness.build_medication
+    @medications = Medication.all
   end
   def create
-    
     @patient = current_user.patients.new(patient_params)
-    
     if @patient.save
       redirect_to patient_path(@patient)
     else
-      
       @medications = Medication.all
       render :new
     end
   end
+
   def index
     @patients = Patient.all
   end
+
   def update
+    @patient = Patient.find(params[:id])
+    @patient.save
+      redirect_to @patient
   end
+
   def show
 
   end
+
   def destroy
-    @patient.destroy.all(:patient_name, :illness, :medication_name)
-    # @illness.destroy
-    # @medication.destroy
-    redirect_to_patients_path
+    @patient.destroy
+    redirect_to_patient_path
   end
+
   private
   def patient_params
     params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity]])
