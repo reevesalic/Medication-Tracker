@@ -1,5 +1,6 @@
-require 'pry'
+
 class PatientsController < ApplicationController
+   
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   def new
     @patient = Patient.new
@@ -8,6 +9,7 @@ class PatientsController < ApplicationController
     @medications = Medication.all
   end
   def create
+    binding.pry
     @patient = current_user.patients.new(patient_params)
     if @patient.save
       redirect_to patient_path(@patient)
@@ -22,7 +24,7 @@ class PatientsController < ApplicationController
   end
 
   def update
-    @patient = Patient.find(params[:id])
+    @patient = Patient.find_by(id: params[:id])
     @patient.save
       redirect_to @patient
   end
@@ -33,7 +35,7 @@ class PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
-    redirect_to_patient_path
+    redirect_to patients_path
   end
 
   private
