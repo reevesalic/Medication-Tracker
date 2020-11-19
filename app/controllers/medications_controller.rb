@@ -10,14 +10,16 @@ class MedicationsController < ApplicationController
     #check params to see if illness belongs to patient
     #if illness belongs to patient
     #then @illness = Illness.find_by(id:)
-    binding.pry
-  # else
-
+    if @illness = patient.illness
+      @illness = Illness.find_by(id: params[:id])
+      # binding.pry
+  else
     @medication = Medication.new
     @medication.issue_medications.build
     render :new
   end
-  
+end
+
   def create
     @medication = Medication.new(medication_params)
     @medication.user = current_user
