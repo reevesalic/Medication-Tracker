@@ -7,9 +7,14 @@ Rails.application.routes.draw do
  delete '/logout' => 'sessions#destroy'
  get '/auth/:provider/callback' => 'sessions#omniauth'
   
-  resources :medications
+   
+  resources :illnesses do
+    resources :medications
+  end
   resources :patients do
     resources :illnesses
+
+    
   end
   resources :users
   

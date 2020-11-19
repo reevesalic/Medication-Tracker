@@ -1,12 +1,18 @@
 class MedicationsController < ApplicationController
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   
   def index
     @medications = current_user.medications.all
   end
   
   def new
+    #check params to see if illness belongs to patient
+    #if illness belongs to patient
+    #then @illness = Illness.find_by(id:)
+    binding.pry
+  # else
+
     @medication = Medication.new
     @medication.issue_medications.build
     render :new
