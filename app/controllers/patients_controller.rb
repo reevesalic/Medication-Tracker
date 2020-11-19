@@ -9,7 +9,7 @@ class PatientsController < ApplicationController
     @medications = Medication.all
   end
   def create
-    binding.pry
+  
     @patient = current_user.patients.new(patient_params)
     if @patient.save
       redirect_to patient_path(@patient)
@@ -26,7 +26,7 @@ class PatientsController < ApplicationController
   def update
     @patient = Patient.find_by(id: params[:id])
     @patient.save
-      redirect_to @patient
+    redirect_to @patient
   end
 
   def show
