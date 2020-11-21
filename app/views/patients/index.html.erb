@@ -1,8 +1,14 @@
 <%= render 'web_links' %>
 
 <h1>All Patients</h1>
+<%= form_tag("/patients", method: 'get') do %>
+<%= label_tag(:q, "Search for:") %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Search") %>
 
-     
+
+    <% end %>  
+
      <% @patients.each do |patient| %> 
      
      <%= link_to patient.name, patient_path(patient) %> 

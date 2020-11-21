@@ -13,3 +13,8 @@ Medication.create(name: 'Azelastine')
 Medication.create(name: 'Pantoprazole')
 
 User.create(email: 'welleralic@gmail.com')
+
+Illness.create(illness: 'Hyperthroidism')
+Illness.create(illness: 'Hypertension')
+Illness.create(illness: 'allergies')
+Illness.create(illness: 'asthma')

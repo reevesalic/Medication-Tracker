@@ -21,6 +21,9 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
+    if !params[:q].empty? #if search submitted
+      @patients = @patients.search(params[:q].downcase) #search thru collection of patients.
+    end
   end
 
   def update
