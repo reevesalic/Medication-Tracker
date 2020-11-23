@@ -9,3 +9,16 @@
 <%= f.submit "Add a medication" %>
 
 <% end %>
+
+<h4>Select a medication from the drop down or create a new medication</h4>
+        <%= f.label :name, "Medication Name" %>
+        <%# <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %> 
+        <%= i.label :medication_id, 'Medication'%>
+        <%= i.fields_for :medication do |m| %>
+        <%= m.text_field :name %><br><br>
+        
+          <%= i.label :frequency, "Frequency"%>
+          <%= m.number_field :frequency %>
+          <%= i.label :quantity, "Quantity"%>
+          <%= m.number_field :quantity %>
+      <% end %>
