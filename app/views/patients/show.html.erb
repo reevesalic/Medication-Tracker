@@ -3,11 +3,11 @@
 <h1>Patient information</h1>
 
   <%= @patient.name %>
-<% @patient.illnesses.each do |illness| %>
-<%= illness.illness %>
+ <% @patient.illnesses.each do |illness| %>
+ <%= illness.illness %>
 
- <%= illness.medication.name %>
-<% end %>
+  <%= illness.medication.name %> 
+ <% end  %>
  
  
 

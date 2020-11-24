@@ -1,0 +1,7 @@
+
+<% @patient.illness.collect do |illness| %>
+<%= link_to illness.illness, patient_illness_path(illness.patient_id, illness) %>
+<% end %>
+<% @illness.medications.collect do |medication| %>
+<%= link_to medication.medication_name, illness_medication_path(medication.illness_id, medication) %>
+<% end %>

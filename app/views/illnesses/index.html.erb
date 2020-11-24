@@ -1,11 +1,3 @@
- <div>
-<%= link_to "Log Out", logout_path, method: :delete %>
-<%= link_to "Add a new patient", new_patient_path %>
-<%= link_to "All patients", patients_path(@patient) %>
-</div>
-<% @illnesses.each do |illness| %>
-    <tbody>
-      <tr>
-        <td><%= illness.illness %></td>
-
-        <% end %>
+<% @patient.illnesses.collect do |illness| %>
+<%= link_to illness.illness, patient_illness_path(illness.patient_id, illness)  %> &nbsp &nbsp
+<% end %>
