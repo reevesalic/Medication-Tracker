@@ -26,11 +26,15 @@ class SessionsController < ApplicationController
 
     def omniauth
         @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
-        user.username = auth["info"]["name"]
+          
+        user.username = auth["info"]["email"]
         user.email = auth['info']['email']
         user.password = SecureRandom.hex(10)
-        redirect_to patients_path
+        
       end
+      session[:user_id] = @user.id
+      
+      redirect_to patients_path
     end
         private
       

@@ -12,6 +12,7 @@ class PatientsController < ApplicationController
   end
 
   def create
+   
     @patient = current_user.patients.new(patient_params)
     if @patient.save
       redirect_to patient_path(@patient)

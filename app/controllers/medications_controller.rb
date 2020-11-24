@@ -7,12 +7,9 @@ class MedicationsController < ApplicationController
   end
   
   def new
-    #check params to see if illness belongs to patient
-    #if illness belongs to patient
-    #then @illness = Illness.find_by(id:)
-    if @illness.patient_id = current_user.id
-       @illness = Illness.find_by(:id)
-      else
+    if params[:illness_id]
+      @illness = Illness.find_by(id: params[:illness_id])
+    else
       @medication = Medication.new
       @medication.issue_medications.build
       render :new
