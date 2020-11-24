@@ -2,16 +2,16 @@
 
 <h1>Patient information</h1>
 
-  <%= @patient.name %>
+ <%= @patient.name %>
  <% @patient.illnesses.each do |illness| %>
- <%= illness.illness %>
+ <%= illness.illness %> %>
 
   <%= illness.medication.name %> 
  <% end  %>
  
  
 
-  <br>
+ <br>
   <br>
   <%= link_to "Edit Patient", edit_patient_path(@patient) %> 
   <%= link_to "Delete Patient", patient_path(@patient), method: :delete %>

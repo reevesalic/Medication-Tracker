@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+   include ApplicationHelper
   def new #loads the signup form
      @user = User.new
   end
@@ -15,12 +15,13 @@ class UsersController < ApplicationController
   end
 
   def show
+   binding.pry
      @user = User.find_by_id(params[:id])
      redirect_to '/' if !@user
   end
 
      private
   def user_params
-    params.require(:user).permit(:username, :password, :name)
+    params.require(:user).permit(:email, :password, :name)
   end
 end

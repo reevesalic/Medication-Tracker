@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
     end
 
     def create
-      @user = User.find_by(username: params[:user][:username])
+      @user = User.find_by(email: params[:user][:email])
       if @user.try(:authenticate, params[:user][:password])
-        session[:user_id] = @user.id
+        session[:email_id] = @user.id
         redirect_to user_path(@user) #patients_path(@patient)
       else
         flash[:error] = "Sorry, please try again."
@@ -25,16 +25,17 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
-        user.username = auth["info"]["name"]
-        user.email = auth['info']['email']
-        user.password = SecureRandom.hex(10)
-        redirect_to patients_path
+      useremail = request.env['omniauth.auth']['info']['email']
+      name = request.env['omniauth.auth']['info']['name']
+      @user = User.find_or_create_by(email: useremail) do |user|
+        user.user_name = name
+        user.password = SecureRandom.hex
       end
-    end
-        private
+      session[:email_id] = @user.id
+      redirect_to user_path(@user)
+      end
+    
+        
       
-      def auth
-        request.env['omniauth.auth']
-      end
+      
 end

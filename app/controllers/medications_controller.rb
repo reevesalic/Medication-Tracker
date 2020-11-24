@@ -1,48 +1,34 @@
 class MedicationsController < ApplicationController
-
-  # before_action :authenticate_user!
-  
-  def index
-    @medications = current_user.medications.all
-  end
-  
+  before_action :set_illness
+  before_action :find_medication, only: %I[show edit update destroy]
   def new
-    #check params to see if illness belongs to patient
-    #if illness belongs to patient
-    #then @illness = Illness.find_by(id:)
-    if @illness = patient.illness
-      @illness = Illness.find_by(id: params[:id])
-      # binding.pry
-  else
-    @medication = Medication.new
-    @medication.issue_medications.build
-    render :new
+    @medication = @illness.medications.new
   end
-end
-
   def create
-    @medication = Medication.new(medication_params)
-    @medication.user = current_user
+    @medication = @illness.medications.new(medication_params)
     if @medication.save
-      redirect_to medications_path, notice: 'Your medication was successfully created.'
+      redirect_to illness_medication_path(@illness, @medication)
     else
       render :new
     end
   end
-  
-  def destroy
-    @medication = Medication.find(params[:id])
-    @medication.destroy
-    redirect_to medications_path, notice: 'Your medication was successfully deleted.'
+  def index
+    @medications = medication.all
+    redirect_to illness_path(@illness)
   end
-  
-  private
-  
-  def medication_params
-    params.require(:medication).permit(
-    :name,
-    :quantity,
-    :frequency
-   )
+  def show
+    return unless verify
+  end
+  def update
+    if !@medication
+      render :new
+    else
+      @medication.update(medication_params)
+      redirect_to illness_medication_path(@illness, @medication)
+    end
+  end
+  def destroy
+    @medication.destroy
+    redirect_to illness_medications_path(@illness)
   end
 end
