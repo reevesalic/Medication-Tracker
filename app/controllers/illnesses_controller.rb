@@ -1,17 +1,17 @@
 class IllnessesController < ApplicationController
-     
+  include ApplicationHelper  
   before_action :set_illness, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_patient
   def new
     @illness = Illness.new
   end
     
   def create
-    @illness = current_user.illnesses.build(illness_params)
+    @illness = patient.illnesses.new(illness_params)
     if @illness.save
       redirect_to patient_illness_path(@patient, @illness)
     else
-      redirect_to new_patient_illness_path(@patient)
+      render :patients_controller/new
     end
   end
 
@@ -25,13 +25,10 @@ class IllnessesController < ApplicationController
   end
 
   def show
-    @illness = Illness.find_by(id: params[:id])
-    if @illness
-    if current_user.id != @illness.user_id
-      redirect_to patient_illnesses_path(session[:current_user])
-    end
+    if !logged_in?
+      redirect_to login_path
     else
-      redirect_to patient_illness_path(@patient)
+      redirect_to patient_illness_path(@patient, @illness)
     end
   end
 
@@ -50,4 +47,10 @@ class IllnessesController < ApplicationController
     @illness = Illness.find_by_id(params[:id])
     redirect_to patient_illnesses_path(@patient) if !@illness
   end
+
+  def set_patient
+    @patient = Patient.find_by_id(params[:patient_id])
+    redirect_to patients_path if !@patient
+  end
+
 end

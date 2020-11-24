@@ -5,7 +5,7 @@
 <%= label_tag(:q, "Search for:") %>
 <%= text_field_tag(:q) %>
 <%= submit_tag("Search") %>
-
+<p><%= "This #{Patient.med_quant.name} has the most medications" %></p>
 
     <% end %>  
 

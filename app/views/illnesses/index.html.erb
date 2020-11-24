@@ -1,6 +1,3 @@
-<% @illnesses.each do |illness| %>
-    <tbody>
-      <tr>
-        <td><%= illness.illness %></td>
-
-        <% end %>
+<% @patient.illnesses.collect do |illness| %>
+<%= link_to illness.illness, patient_illness_path(illness.patient_id, illness)  %> &nbsp &nbsp
+<% end %>
