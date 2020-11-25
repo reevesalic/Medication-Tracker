@@ -1,11 +1,36 @@
 <%# <h1>Add a new medication</h1>
 
-<%= form_for(@medication) do |f| %> 
+ <%# <%= form_tag.label :name, "Medication Name" %>
+        <%# <%= i.collection_select :medication_id, Medication.all, :id, :name, include_blank: true %> %>
+        <%# <%= form.label :medication_id, 'Medication' %> %>
+        <%# <%= form.fields_for :medication do |m| %> %>
+        <%# <%= m.text_field :name %><br><br> %>
+        
+          <%# <%= m.label :frequency, "Frequency"%> %>
+          <%# <%= m.number_field :frequency %> %>
+          <%# <%= m.label :quantity, "Quantity"%> %>
+          <%# <%= m.number_field :quantity %> %>
+      <%# <% end %> %> %>
 
-<%# <%= f.label :medication %> %>
-<%# <%= f.text_field :medication %> %>
+<%# <%= form_for(@medication) do |f| %>  %>
+
+<%= form_with.label :medication %>
+ <%= form_with.text_field :medication %> 
 
 
-<%# <%= f.submit "Add a medication" %> %>
+<%= form_with.submit "Add a medication" %> 
 
-<%# <% end %> %> %>
+<%# <% end %>  %>
+
+<%# <h4>Select a medication from the drop down or create a new medication</h4> %>
+        <%# <%= f.label :name, "Medication Name" %> 
+        <%# <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %> 
+        <%# <%= i.label :medication_id, 'Medication'%>
+        <%# <%= i.fields_for :medication do |m| %> 
+        <%# <%= m.text_field :name %><br><br> 
+        
+          <%# <%= i.label :frequency, "Frequency"%> 
+          <%# <%= m.number_field :frequency %> 
+          <%# <%= i.label :quantity, "Quantity"%> 
+          <%# <%= m.number_field :quantity %> 
+      <%# <% end %> 

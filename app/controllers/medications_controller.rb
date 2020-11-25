@@ -2,7 +2,12 @@ class MedicationsController < ApplicationController
   before_action :set_illness
   before_action :find_medication, only: %I[show edit update destroy]
   def new
-    @medication = @illness.medications.new
+    if params[:illness_id]
+      @illness = Illness.find_by(id: params[:illness_id])
+    else
+      @medication = Medication.new
+      @medication.issue_medications.build
+      render :new
   end
   def create
     @medication = @illness.medications.new(medication_params)
