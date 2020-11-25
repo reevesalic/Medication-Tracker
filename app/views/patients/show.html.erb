@@ -1,11 +1,15 @@
 <%= render 'web_links' %>
 
 <h1>Patient information</h1>
-
-  <%= @patient.name %>
+ 
+<label>Patient Name:</label>
+  <%= @patient.name %><br>
+ 
+<label>Illness:</label>
  <% @patient.illnesses.each do |illness| %>
- <%= illness.illness %>
+ <%= illness.illness %><br>
 
+<label>Medication Name:</label>
   <%= illness.medication.name %> 
  <% end  %>
  
