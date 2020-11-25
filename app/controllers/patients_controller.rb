@@ -1,7 +1,6 @@
 
 class PatientsController < ApplicationController
-  # before_action :set_medication
-  # before_action :set_illness
+ 
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -36,9 +35,9 @@ class PatientsController < ApplicationController
   def update
     
     
-    # @patient = Patient.find(params[:id])
-    # @patient.update(patient_params)
-    # redirect_to patient_path(@patient)
+    @patient = Patient.find(params[:id])
+    @patient.update(patient_params)
+    redirect_to patient_path(@patient)
   end
   
 
@@ -54,7 +53,7 @@ class PatientsController < ApplicationController
   private
   def patient_params
     params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity]])
-    # params.require(:patient).permit(:name, :id, illnesses_attributes: [:illness, medication_attributes: [:name, :frequency, :quantity]])
+    
   end
   
   def set_patient
@@ -62,13 +61,5 @@ class PatientsController < ApplicationController
     redirect_to patients_path if !@patient
   end
 
-  # def set_illness
-  #   @illness = Illness.find_by_id(params[:illness_id])
-  #   redirect_to new_patient_path if !@illness
-  # end
-
-  # def set_medication
-  #   @medication = Medication.find_by_id(params[:medication_id])
-  #   redirect_to new_patient_path if !@medication
-  # end
+  
 end

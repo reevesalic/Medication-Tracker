@@ -7,9 +7,9 @@ class Patient < ApplicationRecord
    
      scope :med_quant, lambda {order(medications: :asc).first}
      
-     # def self.search(params)
-     #   where("LOWER(name) LIKE ?", "%#{params}%")
+     def self.search(params)
+       where("LOWER(name) LIKE ?", "%#{params}%")
      
-     # end
+     end
 
 end
