@@ -34,10 +34,11 @@ class PatientsController < ApplicationController
   end
 
   def update
-    # raise params.inspect
-    @patient = Patient.find(params[:id])
-    @patient.update(patient_params)
-    redirect_to patient_path(@patient)
+    
+    
+    # @patient = Patient.find(params[:id])
+    # @patient.update(patient_params)
+    # redirect_to patient_path(@patient)
   end
   
 
@@ -53,6 +54,7 @@ class PatientsController < ApplicationController
   private
   def patient_params
     params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity]])
+    # params.require(:patient).permit(:name, :id, illnesses_attributes: [:illness, medication_attributes: [:name, :frequency, :quantity]])
   end
   
   def set_patient
