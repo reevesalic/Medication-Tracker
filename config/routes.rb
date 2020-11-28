@@ -8,12 +8,13 @@ Rails.application.routes.draw do
  get '/auth/:provider/callback' => 'sessions#omniauth'
   
    
-  resources :illnesses, only: [] do
-    resources :medications
-  end
+  # resources :illnesses, only: [] do
+    
+  # end
 
   resources :patients do
     resources :illnesses
+    resources :medications
   end
 
   resources :users, only: [:new, :show]

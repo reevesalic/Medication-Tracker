@@ -9,7 +9,7 @@
  <% @patient.illnesses.each do |illness| %>
  <%= illness.illness %><br>
 
-<label>Medication Name:</label>
+<%= label_tag(:medication, "Medication Name:") %>
   <%= illness.medication.name %> 
  <% end  %>
  
