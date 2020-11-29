@@ -12,15 +12,15 @@
           <%# <%= m.number_field :quantity %> %>
       <%# <% end %> %> %>
 
-<%# <%= form_for(@medication) do |f| %>  %>
+<%# <%= form_for(@medication) do |f|  %> %>
 
-<%= form_with.label :medication %>
- <%= form_with.text_field :medication %> 
+ <%= form_tag.label :medication %>
+ <%= form_tag.text_field :medication %> 
 
 
-<%= form_with.submit "Add a medication" %> 
+<%= f.submit "Add a medication" %> 
 
-<%# <% end %>  %>
+<%# <% end  %> %>
 
 <%# <h4>Select a medication from the drop down or create a new medication</h4> %>
         <%# <%= f.label :name, "Medication Name" %> 

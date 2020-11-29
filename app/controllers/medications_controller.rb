@@ -7,11 +7,11 @@ class MedicationsController < ApplicationController
   end
   
   def new
-    if params[:illness_id]
-      @illness = Illness.find_by(id: params[:illness_id])
+    if params[:patient_id]
+      @patient = Patient.find_by(id: params[:patient_id])
     else
       @medication = Medication.new
-      @medication.issue_medications.build
+      @medication.patient_medications.build
       render :new
   end
 end

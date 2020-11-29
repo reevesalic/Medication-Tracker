@@ -12,7 +12,7 @@
 
       <h4>Select a medication from the drop down or create a new medication</h4>
         
-        <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %>
+        <%# <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %> %>
         
         <%= i.fields_for :medication do |m| %>
           <%= m.label :name, 'Medication Name' %>
