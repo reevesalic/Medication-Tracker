@@ -2,15 +2,16 @@
 
 <h1>Patient information</h1>
  
-<label>Patient Name:</label>
-  <%= @patient.name %><br>
- 
-<label>Illness:</label>
- <% @patient.illnesses.each do |illness| %>
- <%= illness.illness %><br>
+<p>Patient Name: <%= @patient.name %><br></p>
 
-<%= label_tag(:medication, "Medication Name:") %>
-  <%= illness.medication.name %> 
+ 
+
+
+ <% @patient.illnesses.each do |illness| %>
+ <p> Illness: <%= illness.illness %><br> </p>
+
+<%# <%= label_tag(:medication, "Medication Name:") %>
+ <p> Medication Name: <%= illness.medication.name %> </p>
  <% end  %>
  
  
