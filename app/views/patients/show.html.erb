@@ -4,18 +4,12 @@
  
 <p>Patient Name: <%= @patient.name %><br></p>
 
+  <% @patient.illnesses.each do |illness| %>
+  <p> Illness: <%= illness.illness %><br> </p>
+
+  <p> Medication Name: <%= illness.medication.name %> </p>
+  <% end  %>
  
-
-
- <% @patient.illnesses.each do |illness| %>
- <p> Illness: <%= illness.illness %><br> </p>
-
-<%# <%= label_tag(:medication, "Medication Name:") %>
- <p> Medication Name: <%= illness.medication.name %> </p>
- <% end  %>
- 
- 
-
   <br>
   <br>
   <%= link_to "Edit Patient", edit_patient_path(@patient) %> 
