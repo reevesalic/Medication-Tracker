@@ -5,7 +5,7 @@
 <p>Patient Name: <%= @patient.name %><br></p>
 
   <% @patient.illnesses.each do |illness| %>
-  <p> Illness: <%= illness.illness %><br> </p>
+  <p> Illness: <%= link_to illness.illness, patient_illnesses_path(illness.patient_id) %><br> </p>
 
   <p> Medication Name: <%= illness.medication.name %> </p>
   <% end  %>
