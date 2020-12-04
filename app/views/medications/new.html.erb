@@ -21,7 +21,7 @@
 
 <h4>Select a medication from the drop down or create a new medication</h4>
         <%= form.label :name, "Medication Name" %>
-        <%= form.collection_select :medication_id, @medications, :id, :name, include_blank: true  %>
+        <%# <%= form.collection_select :medication_id, @medications, :id, :name, include_blank: true  %> %>
         <%= form.label :medication_id, 'Medication'  %>
         <%= form.fields_for :medication do |m|  %>
         <%= m.text_field :name %><br><br> 

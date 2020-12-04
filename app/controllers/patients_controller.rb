@@ -14,7 +14,7 @@ class PatientsController < ApplicationController
    
     @patient = current_user.patients.new(patient_params)
     if @patient.save
-      redirect_to patient_path(@patient)
+      redirect_to patient_path(@patient, @medication)
     else
       @medications = Medication.all
       render :new
@@ -29,6 +29,7 @@ class PatientsController < ApplicationController
   end
 
   def edit
+
     @patient = Patient.find(params[:id])
   end
 
@@ -36,6 +37,7 @@ class PatientsController < ApplicationController
     
     
     @patient = Patient.find(params[:id])
+    
     @patient.update(patient_params)
     redirect_to patient_path(@patient)
   end

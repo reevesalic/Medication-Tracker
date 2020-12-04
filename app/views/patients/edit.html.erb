@@ -1,8 +1,40 @@
 
 <%= render 'web_links' %>
-<%= render 'form', title: "Edit the Patient" %>
+<%# <%= render 'form', title: "Edit the Patient" %> %>
 <%= link_to "Add a Medication", new_patient_medication_path(@patient) %>
 
+<%# <h1><%= title %></h1> %>
+
+ <%= form_with(model: @patient, local: true) do |f| %> 
+    <%= f.label :name, "Patient Name" %>
+    <%= f.text_field :name %>
+    <br><br><br>
+   
+  <div> 
+    <%= f.fields_for :illnesses do |i|%>
+    <%# #if patient has illnesses, checkbox for current illnesses %>
+      <%= i.label :illness, "Illness Description"%>
+      <%= i.text_field :illness %> 
+
+      <h4>Select a medication from the drop down or create a new medication</h4>
+        
+        <%# <%= i.collection_select :medication_id, @medications, :id, :name, include_blank: true %> %>
+        <%# <%= i.collection_select :medication_id, Medication.all, :id, :name, include_blank: true %> %>
+        <%= i.fields_for :medication do |m| %>
+          <%= m.label :name, 'Medication Name' %>
+          <%= m.text_field :name %><br><br>
+        
+          <%= m.label :frequency, "Frequency"%>
+          <%= m.number_field :frequency %>
+          <%= m.label :quantity, "Quantity"%>
+          <%= m.number_field :quantity %><br><br>
+          <% end %>
+       
+    <% end %>
+    <br>
+    <br>
+  <%= f.submit "submit" %>
+<% end %>
 
 
 

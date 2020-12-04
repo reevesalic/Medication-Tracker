@@ -7,6 +7,7 @@
    
   <div> 
     <%= f.fields_for :illnesses do |i|%>
+    <%# #if patient has illnesses, checkbox for current illnesses %>
       <%= i.label :illness, "Illness Description"%>
       <%= i.text_field :illness %> 
 
