@@ -1,33 +1,22 @@
+ <div>
+<%= link_to "Log Out", logout_path, method: :delete %>
+<%= link_to "Add a new patient", new_patient_path %>
+<%= link_to "All patients", patients_path(@patient) %>
+
+</div>
 <h1>Add a new medication</h1>
 
- <%# <%= form_tag.label :name, "Medication Name" %>
-        <%# <%= form.collection_select :medication_id, Medication.all, :id, :name, include_blank: true %> %>
-        <%# <%= form.label :medication_id, 'Medication' %> %>
-        <%# <%= form.fields_for :medication do |m| %> %>
-        <%# <%= m.text_field :name<br><br> %> %>
-        
-          <%# <%= m.label :frequency, "Frequency" %> %>
-          <%# <%= m.number_field :frequency %> %>
-          <%# <%= m.label :quantity, "Quantity" %> %>
-          <%# <%= m.number_field :quantity %> %>
-      <%# <% end %> %> %>
+ 
 
-  <%# <%= form_tag(@medication) do |f| %>
-    <%# <%= f.label :medication_id, 'Medication' %>  %>
-    <%# <%= f.text_field :medication %>  %>
-    <%# <%= f.submit "Add a medication" %>  %>
-
-  <%# <% end %>  %> %>
-
+  
+<%= form_with model: @medication do |form| %>
 <h4>Select a medication from the drop down or create a new medication</h4>
         <%= form.label :name, "Medication Name" %>
-        <%= form.collection_select :medication_id, @medications, :id, :name, include_blank: true  %>
-        <%= form.label :medication_id, 'Medication'  %>
+        
         <%= form.fields_for :medication do |m|  %>
         <%= m.text_field :name %><br><br> 
+     <%= m.submit "submit" %>
+     <% end  %>   
+     
         
-          <%# <%= m.label :frequency, "Frequency" %>  %>
-          <%# <%= m.number_field :frequency %>  %>
-          <%# <%= m.label :quantity, "Quantity" %>  %>
-          <%# <%= m.number_field :quantity %>  %>
      <% end  %>
