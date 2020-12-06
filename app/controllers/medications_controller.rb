@@ -2,6 +2,7 @@ class MedicationsController < ApplicationController
 
   # before_action :authenticate_user!
   
+
   def index
     @medications = current_user.medications.all
   end
@@ -26,6 +27,29 @@ end
     end
   end
   
+  def index
+    @patients = Patient.all
+  end
+
+  def edit
+
+    @medication = Medication.find(params[:id])
+  end
+
+  def update
+    
+    
+    @medication = Medication.find(params[:id])
+    
+    @medication.update(medication_params)
+    redirect_to medication_path(@medication)
+  end
+  
+
+  def show
+
+  end
+
   def destroy
     @medication = Medication.find(params[:id])
     @medication.destroy
