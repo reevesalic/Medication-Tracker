@@ -4,22 +4,24 @@
 <%= link_to "All patients", patients_path(@patient) %>
 
 </div>
-
 <h1>Add a new medication</h1>
 
  
+
+  
 <%= form_with model: @medication do |form| %>
 <h4>Select a medication from the drop down or create a new medication</h4>
         <%= form.label :name, "Medication Name" %>
-         
+        
         <%= form.fields_for :medication do |m|  %>
         <%= m.text_field :name %><br><br> 
-        
           <%= m.label :frequency, "Frequency" %> 
           <%= m.number_field :frequency  %>
           <%= m.label :quantity, "Quantity"  %>
-          <%= m.number_field :quantity %>
+          <%= m.number_field :quantity %><br><br>
           <%= m.submit "submit" %>
-      <% end %>
       
-    <% end %>
+      <% end  %>   
+     
+       <% end %> 
+    
