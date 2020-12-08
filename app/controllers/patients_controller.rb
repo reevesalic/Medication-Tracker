@@ -55,8 +55,8 @@ class PatientsController < ApplicationController
 
   private
   def patient_params
-    params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity]])
-    
+    # params.require(:patient).permit(:name, illnesses_attributes: [:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity]])
+    params.require(:patient).permit(:name, illnesses_attributes: [:id, :illness, :patient_id, :medication_id, medication_attributes: [:id, :name, :frequency, :quantity]])
   end
   
   def set_patient
