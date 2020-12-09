@@ -3,4 +3,5 @@ class Medication < ApplicationRecord
      has_many :patients, :through => :illnesses
      # validates :medication, presence: true
      # validates :name, uniqueness: true
+     validates :name, :quantity, :frequency, presence: true
 end

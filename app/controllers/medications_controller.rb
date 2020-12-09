@@ -1,8 +1,5 @@
 class MedicationsController < ApplicationController
 
-  # before_action :authenticate_user!
-  
-
   def index
     @medications = current_user.medications.all
   end
@@ -10,6 +7,7 @@ class MedicationsController < ApplicationController
   def new
     if params[:patient_id]
       @patient = Patient.find_by(id: params[:patient_id])
+      @illness = @patient.illnesses
     else
       @medication = Medication.new
       @medication.patient_medications.build
@@ -18,10 +16,11 @@ class MedicationsController < ApplicationController
 end
 
   def create
+    # binding.pry
     @medication = Medication.new(medication_params)
-    @medication.user = current_user
+   
     if @medication.save
-      redirect_to medications_path, notice: 'Your medication was successfully created.'
+      redirect_to patient_medications_path(@medication), notice: 'Your medication was successfully created.'
     else
       render :new
     end
@@ -32,20 +31,16 @@ end
   end
 
   def edit
-
     @medication = Medication.find(params[:id])
   end
 
   def update
-    
-    
     @medication = Medication.find(params[:id])
     
     @medication.update(medication_params)
     redirect_to medication_path(@medication)
   end
   
-
   def show
 
   end
@@ -59,8 +54,6 @@ end
   private
   
   def medication_params
-    params.require(:medication).permit(:name, :quantity,
-    :frequency
-   )
+    params.require(:medication).permit(:name, :quantity, :frequency)
   end
 end
