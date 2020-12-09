@@ -3,15 +3,23 @@ class IllnessesController < ApplicationController
   before_action :set_illness, only: [:show, :edit, :update, :destroy]
   before_action :set_patient
   def new
-    @illness = Illness.new
+    if params[:patient_id]
+      @patient = Patient.find_by(id: params[:patient_id])
+      @illness = @patient.illnesses
+    else
+      @medication = Medication.new
+      @medication.patient_medications.build
+      render :new
   end
+end
     
   def create
-    @illness = patient.illnesses.new(illness_params)
+    binding.pry
+    @illness = @patient.illnesses.new(illness_params)
     if @illness.save
-      redirect_to patient_illness_path(@patient, @illness)
+      redirect_to patient_illness_path(@illness, @medication)
     else
-      render :patients_controller/new
+      render :new
     end
   end
 

@@ -11,7 +11,6 @@ class PatientsController < ApplicationController
   end
 
   def create
-   
     @patient = current_user.patients.new(patient_params)
     # binding.pry
     if @patient.save

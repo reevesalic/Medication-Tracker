@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   # resources :illnesses, only: [] do
     
   # end
-
+resources :medications
   resources :patients do
     resources :illnesses
-    resources :medications
+    
   end
 
   resources :users, only: [:new, :show]

@@ -3,7 +3,7 @@
 <%= link_to "Add a new patient", new_patient_path %>
 <%= link_to "All patients", patients_path(@patient) %>
 
-</div>
+</div> <br>
 <%= form_with(model: @medication, url: patient_medications_path(@patient), local: true) do |f| %>
       <%= f.label :illness, "Illness Description"%>
       <%= f.text_field :illness %> 
@@ -22,21 +22,6 @@
             <%= m.submit "submit" %>
             <% end %>
 
-<%# <h1>Add a new medication</h1> %>
-
-<%# <%= form_with(model: @medication,url: patient_medications_path(@patient), local: true) do |form| %> %>
-<%# <h4>Create a new medication</h4> %>
-        <%# <%= i.label :name, "Medication Name" %> %>
-        
-        <%# <%= m.fields_for :medication do |m|  %>
-        <%# <%= m.text_field :name %><br><br>  %>
-          <%# <%= m.label :frequency, "Frequency" %>  %>
-          <%# <%= m.number_field :frequency  %> %>
-          <%# <%= m.label :quantity, "Quantity"  %> %>
-          <%# <%= m.number_field :quantity %><br><br> %>
-          <%# <%= m.submit "submit" %> %> %>
-      
-      <%# <% end  %>    %> %>
-     
+  
        <% end %> 
     
