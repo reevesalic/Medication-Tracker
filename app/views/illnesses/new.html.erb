@@ -9,8 +9,6 @@
       <%= f.text_field :illness %> 
 
       <h4>Create a new medication</h4>
-        
-       
           <%= f.fields_for :medication do |m| %>
             <%= m.label :name, 'Medication Name' %>
             <%= m.text_field :name %><br><br>

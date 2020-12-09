@@ -5,7 +5,8 @@ class IllnessesController < ApplicationController
   def new
     if params[:patient_id]
       @patient = Patient.find_by(id: params[:patient_id])
-      @illness = @patient.illnesses
+      @illness = @patient.illnesses.build
+      @illness.build_medication
     else
       @medication = Medication.new
       @medication.patient_medications.build
@@ -17,7 +18,7 @@ end
     binding.pry
     @illness = @patient.illnesses.new(illness_params)
     if @illness.save
-      redirect_to patient_illness_path(@illness, @medication)
+      redirect_to patient_illnesses_path(@patient, @illness, @medication)
     else
       render :new
     end
@@ -48,7 +49,7 @@ end
   private
 
   def illness_params
-    params.require(:illness).permit(:illness, :patient_id, :medication_id, medications_attributes: [:name, :frequency, :quantity])
+    params.require(:illness).permit(:illness, :patient_id, :medication_id, medication_attributes: [:name, :frequency, :quantity])
   end
 
   def set_illness
