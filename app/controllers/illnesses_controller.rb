@@ -15,7 +15,6 @@ class IllnessesController < ApplicationController
 end
     
   def create
-    binding.pry
     @illness = @patient.illnesses.new(illness_params)
     if @illness.save
       redirect_to patient_illnesses_path(@patient, @illness, @medication)

@@ -5,16 +5,14 @@ class Patient < ApplicationRecord
      accepts_nested_attributes_for :illnesses 
        
      def self.medication_attributes(params)
-      binding.pry
+      
      end
-      # self.medication = Medication.find_or_create_by(params)
-      # self.medications << medication
-  # #     #as smart as youd like it
-  # #     #change her join table to illness
-  # end
-   
-     scope :med_quant, lambda {order(medications: :asc).first}
-     
+    #  scope :patient_quant, lambda {where(patients: :asc)}
+      #  scope :med_quant, lambda {joins(:medication).(patient).(illness)where("COUNT(medications) > ?", count)} 
+    #  scope :med_quant, lambda {where(medications: :asc).first}
+    scope :patient_quant, lambda {where("COUNT(patients) > ?", count)}
+    binding.pry
+     #join medications table and maybe join illnesses 
      def self.search(params)
        where("LOWER(name) LIKE ?", "%#{params}%")
      
