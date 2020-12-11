@@ -10,8 +10,9 @@ class Patient < ApplicationRecord
     #  scope :patient_quant, lambda {where(patients: :asc)}
       #  scope :med_quant, lambda {joins(:medication).(patient).(illness)where("COUNT(medications) > ?", count)} 
     #  scope :med_quant, lambda {where(medications: :asc).first}
-    scope :patient_quant, lambda {where("COUNT(patients) > ?", count)}
-    binding.pry
+    # scope :most_illnesses -> {joins(:illnesses).group(:id).order(‘count(patients.id)desc’)}
+    scope :most_illnesses, ->  {joins(:illnesses).group(:id).order('count(patients.id)desc')}
+      # binding.pry
      #join medications table and maybe join illnesses 
      def self.search(params)
        where("LOWER(name) LIKE ?", "%#{params}%")
