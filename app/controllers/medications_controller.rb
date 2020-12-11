@@ -12,8 +12,8 @@ class MedicationsController < ApplicationController
       @medication = Medication.new
       @medication.patient_medications.build
       render :new
+    end
   end
-end
 
   def create
     # binding.pry

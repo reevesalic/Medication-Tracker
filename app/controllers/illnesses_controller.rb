@@ -11,8 +11,8 @@ class IllnessesController < ApplicationController
       @medication = Medication.new
       @medication.patient_medications.build
       render :new
+    end
   end
-end
     
   def create
     @illness = @patient.illnesses.new(illness_params)
