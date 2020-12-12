@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         redirect_to user_path(@user) 
       else
         flash[:error] = "Sorry, please try again."
-        redirect_to login_path
+        render :welcome
       end
     end
 

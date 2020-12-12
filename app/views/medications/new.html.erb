@@ -5,10 +5,20 @@
 
 </div> <br>
 <%= form_with(model: @medication, url: patient_medications_path(@patient), local: true) do |f| %>
+      <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2>There were some errors:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
       <%= f.label :illness, "Illness Description"%>
       <%= f.text_field :illness %> 
 
-      <h4>Create a new medication</h4>
+      <h4>Add a new medication</h4>
         
        
           <%= f.fields_for :medication do |m| %>

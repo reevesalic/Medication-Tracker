@@ -5,6 +5,7 @@
 <br>
 
  <%= form_with(model: @patient, local: true) do |f| %> 
+ 
     <%= f.label :name, "Patient Name" %>
     <%= f.text_field :name %>
     <br><br><br>
@@ -15,7 +16,7 @@
       <%= i.label :illness, "Illness Description"%>
       <%= i.text_field :illness %> 
 
-      <h4>Create a new medication</h4>
+      <h4>Add a new medication</h4>
         
         <%= i.fields_for :medication do |m| %>
           <%= m.label :name, 'Medication Name' %>
