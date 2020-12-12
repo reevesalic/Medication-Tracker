@@ -5,7 +5,16 @@
 <br>
 
  <%= form_with(model: @patient, local: true) do |f| %> 
- 
+ <% if @patient.errors.any? %>
+      <div id="error_explanation">
+        <h2>There were some errors:</h2>
+        <ul>
+          <% @patient.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <%= f.label :name, "Patient Name" %>
     <%= f.text_field :name %>
     <br><br><br>

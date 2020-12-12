@@ -16,7 +16,7 @@ class MedicationsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    
     @medication = Medication.new(medication_params)
    
     if @medication.save
