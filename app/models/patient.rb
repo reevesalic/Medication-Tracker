@@ -4,11 +4,9 @@ class Patient < ApplicationRecord
      has_many :medications, dependent: :destroy, :through => :illnesses
      accepts_nested_attributes_for :illnesses 
      validates :name, presence: true
-     
-     scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id)}
-    #  scope :user_scope, -> (id){where("user_id = ?", id)}
 
-    #  scope :sort_name, ->  {joins(:illnesses).group(:id).order('(illnesses.illness)asc')}
+     scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id)}
+   
      
     def self.most_illnesses
       joins(:illnesses).group(:id).order('count(patients.id)desc')
