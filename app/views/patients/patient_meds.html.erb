@@ -1,0 +1,19 @@
+<%= render 'web_links' %>
+
+<h1>All Patients</h1>
+<%= form_tag("/patients", method: 'get') do %>
+<%= label_tag(:q, "Search for:") %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Search") %>
+
+
+<h2> Patients Ordered by most illnesses </h2>
+
+    <ul>
+
+        <% @patients.most_illnesses.each do |patient| %> 
+              <li> <%= link_to patient.name, patient_path(patient) %>  -- Number of illnesses <%= patient.illnesses.count %></li>
+  <li> Number of Medications <%= patient.medications.count %>
+        <% end %>
+    </ul>
+    <% end %> 

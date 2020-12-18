@@ -6,12 +6,8 @@ Rails.application.routes.draw do
  post '/signup' => 'users#create'
  delete '/logout' => 'sessions#destroy'
  get '/auth/:provider/callback' => 'sessions#omniauth'
-  
-   
-  # resources :illnesses, only: [] do
-    
-  # end
-resources :medications
+ get '/patients/patient_meds' => 'patients#patient_meds'
+
   resources :patients do
     resources :illnesses
     

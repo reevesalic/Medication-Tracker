@@ -20,11 +20,17 @@ class PatientsController < ApplicationController
     end
   end
 
+
   def index
-    @patients = Patient.all
+    @patients = Patient.patient_meds
     if params[:q] #if search submitted
       @patients = @patients.search(params[:q]) #search thru collection of patients.
     end
+  end
+
+  def patient_meds
+    @patients = Patient.patient_meds
+    
   end
 
   def edit
