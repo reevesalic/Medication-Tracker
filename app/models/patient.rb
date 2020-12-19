@@ -9,7 +9,7 @@ class Patient < ApplicationRecord
    
      
     def self.most_illnesses
-      joins(:illnesses).group(:id).order('(patients.name)asc')
+      joins(:illnesses).group(:id).order('count(patients.id)desc')
     end
 
       def self.search(params)
