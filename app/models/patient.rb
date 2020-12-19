@@ -5,11 +5,11 @@ class Patient < ApplicationRecord
      accepts_nested_attributes_for :illnesses 
      validates :name, presence: true
 
-     scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id)}
+     scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id).order('count(patients.id)asc')}
    
-     scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id)}
+     
     def self.most_illnesses
-      joins(:illnesses).group(:id).order('count(patients.id)asc')
+      joins(:illnesses).group(:id).order('(patients.name)asc')
     end
 
       def self.search(params)
