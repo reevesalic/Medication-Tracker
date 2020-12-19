@@ -6,18 +6,13 @@
 <%= text_field_tag(:q) %>
 <%= submit_tag("Search") %>
 
-
 <h2> Patients </h2>
-
-    <ul>
-
-        <% @patients.each do |patient| %> 
-            <li> <%= link_to patient.name, patient_path(patient) %> </li>
-            
-        <% end %>
-         
-    </ul>
-    <%= link_to "View Medication and Illness counts", patients_patient_meds_path(@patient) %>
+  <ul>
+    <% @patients.each do |patient| %> 
+    <li> <%= link_to patient.name, patient_path(patient) %> </li>
+    <% end %>
+  </ul>
+    <%= link_to "View Medication counts", patients_patient_meds_path(@patient) %>
     <br>
     <%= link_to "View Illness counts", patients_most_illnesses_path(@patient) %>
     <% end %>  
