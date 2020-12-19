@@ -7,9 +7,9 @@ class Patient < ApplicationRecord
 
      scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id)}
    
-     
+     scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id)}
     def self.most_illnesses
-      joins(:illnesses).group(:id).order('count(patients.id)desc')
+      joins(:illnesses).group(:id).order('count(patients.id)asc')
     end
 
       def self.search(params)

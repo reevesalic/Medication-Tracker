@@ -28,6 +28,10 @@ class PatientsController < ApplicationController
     end
   end
 
+  def most_illnesses
+    @patients = Patient.most_illnesses
+  end
+  
   def patient_meds
     @patients = Patient.patient_meds
     
@@ -39,7 +43,6 @@ class PatientsController < ApplicationController
 
   def update
     @patient = Patient.find(params[:id])
-    
     @patient.update(patient_params)
     redirect_to patient_path(@patient)
   end
