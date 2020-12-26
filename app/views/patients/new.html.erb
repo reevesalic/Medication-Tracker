@@ -1,8 +1,6 @@
 <%= render 'web_links' %><br>
-   
 <h2>Add a New Patient</h2>
 <br>
-
  <%= form_with(model: @patient, local: true) do |f| %> 
  <% if @patient.errors.any? %>
       <div id="error_explanation">

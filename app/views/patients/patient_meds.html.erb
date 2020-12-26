@@ -6,8 +6,7 @@
 <%= text_field_tag(:q) %>
 <%= submit_tag("Search") %>
 
-
-<h2> Patients Ordered by least medications </h2>
+<h2> Patients Ordered by least number of medications </h2>
   <ul>
     <% @patients.most_illnesses.each do |patient| %> 
     <li> <%= link_to patient.name, patient_path(patient) %>  -- Number of Medications <%= patient.illnesses.count %></li>

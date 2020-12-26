@@ -1,24 +1,18 @@
-
 <%= render 'web_links' %>
 
-
-
 <h1>Edit the patient</h1>
-
- <%= form_with(model: @patient, local: true) do |f| %> 
-    <%= f.label :name, "Patient Name" %>
-    <%= f.text_field :name %>
-    <br><br><br>
-   
+  
+<%= form_with(model: @patient, local: true) do |f| %> 
+  <%= f.label :name, "Patient Name" %>
+  <%= f.text_field :name %>
+  <br><br><br>
   <div> 
     <%= f.fields_for :illnesses do |i|%>
-    
       <%= i.label :illness, "Illness Description"%>
       <%= i.text_field :illness %> 
 
       <h4>Create a new medication</h4>
-        
-       
+              
       <%= i.fields_for :medication do |m| %>
         <%= m.label :name, 'Medication Name' %>
         <%= m.text_field :name %><br><br>
@@ -28,12 +22,12 @@
         <%= m.label :quantity, "Quantity"%>
         <%= m.number_field :quantity %><br><br>
         <% end %>
-       
+        
     <% end %>
     <br>
     <br>
-  <%= f.submit "submit" %>
-  <%= link_to "Add a Medication and an Illness", new_patient_illness_path(@patient) %>
+    <%= f.submit "submit" %>
+    <%= link_to "Add a Medication and an Illness", new_patient_illness_path(@patient) %>
 <% end %>
 
 

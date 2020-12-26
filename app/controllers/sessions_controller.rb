@@ -27,12 +27,14 @@ class SessionsController < ApplicationController
     def omniauth
       useremail = request.env['omniauth.auth']['info']['email']
       name = request.env['omniauth.auth']['info']['name']
+      #find or create a user using the email
       @user = User.find_or_create_by(email: useremail) do |user|
         user.name = name
         user.password = SecureRandom.hex(5)
         user.password_confirmation=user.password
       end
+      #sets session
       session[:user_id] = @user.id
-      redirect_to user_path(@user) #patients_path(@patient)
+      redirect_to user_path(@user) 
     end
 end
