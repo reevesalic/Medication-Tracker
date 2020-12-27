@@ -1,9 +1,5 @@
 
- <div>
-<%= link_to "Log Out", logout_path, method: :delete %>
-<%= link_to "Add a new patient", new_patient_path%>
-<%= link_to "All patients", patients_path(@patient) %>
-</div>
+
 <h1>Log In!</h1>
 
 <p><%= flash[:error] %>
@@ -19,6 +15,7 @@
 <br>
 <%= f.submit "Log in" %>
 <% end %>
+<br>
 <br>
      <%= link_to "Signup", signup_path %>
 <br>
