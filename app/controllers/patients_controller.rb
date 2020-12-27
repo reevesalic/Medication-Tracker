@@ -2,6 +2,7 @@
 class PatientsController < ApplicationController
  
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  
 
   def new
     @patient = Patient.new

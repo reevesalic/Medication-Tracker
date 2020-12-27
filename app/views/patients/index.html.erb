@@ -2,10 +2,7 @@
 
 <h1>All Patients</h1>
 <%= form_tag("/patients", method: 'get') do %>
-
-
-<h2> Patients </h2>
-  <ul>
+ <ul>
     <% @patients.each do |patient| %> 
     <li> <%= link_to patient.name, patient_path(patient) %> </li>
     <% end %>
