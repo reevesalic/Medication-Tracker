@@ -6,15 +6,8 @@ class Patient < ApplicationRecord
      validates :name, presence: true
 
      scope :patient_meds, -> {joins(:illnesses).left_outer_joins(:medications).group(:id).order('count(patients.id)asc')}
-   
-     
+       
     def self.most_illnesses
       joins(:illnesses).group(:id).order('count(patients.id)desc')
     end
-
-      def self.search(params)
-       where("LOWER(name) LIKE ?", "%#{params}%")
-     
-     end
-
 end

@@ -6,10 +6,8 @@
 
   <% @patient.illnesses.each do |illness| %>
   <p> Illness: <%= link_to illness.illness, patient_illnesses_path(illness.patient_id) %><br> </p>
-
   <p> Medication Name: <%= illness.medication.name %> </p>
-  <% end  %>
- 
+  <% end %>
   <br>
   <br>
   <%= link_to "Edit Patient", edit_patient_path(@patient) %> 

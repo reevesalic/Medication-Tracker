@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
     def welcome
-
     end
 
     def  destroy
@@ -10,7 +9,6 @@ class SessionsController < ApplicationController
     end
 
     def new
-    
     end
 
     def create
