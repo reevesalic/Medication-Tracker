@@ -9,7 +9,8 @@
 <h2> Patients Ordered by most illnesses </h2>
      <ul>
      <% @patients.most_illnesses.each do |patient| %> 
-     <li> <%= link_to patient.name, patient_path(patient) %>  -- Number of illnesses <%= patient.illnesses.count %></li>
+     <li> <%= link_to patient.name, patient_path(patient) %>  
+     -- Number of illnesses <%= patient.illnesses.count %></li>
      <% end %>
      </ul>
 <% end %> 
