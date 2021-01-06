@@ -5,6 +5,7 @@ class CreateIllnesses < ActiveRecord::Migration[6.0]
       t.integer :medication_id
       t.integer :patient_id
       
+      
 
       t.timestamps
     end
