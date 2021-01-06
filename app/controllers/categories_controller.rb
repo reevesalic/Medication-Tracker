@@ -4,7 +4,13 @@ class CategoriesController < ApplicationController
           @illness = Illness.find(params[:id])
      end
 
-     def show
-          @category = Category.all
+     def index
+          @categories = Category.all
      end
+
+     private
+     def category_params
+          params.require(:category).permit(:title, illnesses_attributes: [:id, :illness, :patient_id])
+        end
 end
+
