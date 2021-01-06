@@ -1,4 +1,4 @@
-<% @categories.each do |category|  %>
-    <li> <%= link_to category.title, category_path(category) %> </li>
+<% @category.illnesses.each do |illness|  %>
+    <li> <%= link_to illness.illness, patient_illness_path(@illness) %> </li>
     <% end %>
 
