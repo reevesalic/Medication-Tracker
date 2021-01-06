@@ -5,16 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Alicia = User.create(name: 'Alicia', email: 'welleralic@gmail.com', password: 'pass')
 
-Medication.create(name: 'Singulair')
-Medication.create(name: 'Synthroid')
-Medication.create(name: 'Albuterol')
-Medication.create(name: 'Azelastine')
-Medication.create(name: 'Pantoprazole')
+Sally = Patient.create(name: 'Sally', user_id: Alicia.id)
 
-User.create(email: 'welleralic@gmail.com')
+medication1 = Medication.create(name: 'Singulair', quantity: '1', frequency: '2')
+# Medication.create(name: 'Synthroid')
+# Medication.create(name: 'Albuterol')
+# Medication.create(name: 'Azelastine')
+# Medication.create(name: 'Pantoprazole')
 
-Illness.create(illness: 'Hyperthroidism')
-Illness.create(illness: 'Hypertension')
-Illness.create(illness: 'allergies')
-Illness.create(illness: 'asthma')
+category1 = Category.create(title: 'Respiratory')
+# Category.create(category: 'Pulmonary')
+# Category.create(category: 'Gastro')
+
+illness1 = Illness.create(illness: 'asthma', medication_id: medication1.id, patient_id: Sally.id, category_id: category1.id)
+# Illness.create(illness: 'Hypertension')
+# Illness.create(illness: 'allergies')
+# Illness.create(illness: 'asthma')
+# Illness.create(illness: 'acid reflux')
+

@@ -1,8 +1,8 @@
 <div>
 <%= link_to "Log Out", logout_path, method: :delete %>
 <%= link_to "Add a new patient", new_patient_path %>
-<%= link_to "All patients", patients_path %>
-
+<%= link_to "All patients", patients_path %><br><br>
+<%=@patient.name%>
 </div> <br>
 <%= form_with(model: @illness, url: patient_illnesses_path(@patient), local: true) do |f| %>
       <% if @illness.errors.any? %>

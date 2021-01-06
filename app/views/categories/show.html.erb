@@ -1,0 +1,5 @@
+<h1>Categories associated with Illnesses</h1>
+
+<% @category.illnesses.each do |illness| %>
+<%= link_to illness.illness, patient_illness_path(@illness)%>
+<% end %>

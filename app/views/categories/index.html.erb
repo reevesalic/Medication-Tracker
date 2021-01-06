@@ -1,0 +1,7 @@
+<% @categories.each do |category|  %>
+    <li> <%= link_to category.title, category_path(category) %> </li>
+    <% end %>
+  </ul>
+    <%= link_to "View Medication counts", patients_patient_meds_path(@patient) %>
+    <br>
+    <%= link_to "View Illness counts", patients_most_illnesses_path(@patient) %>

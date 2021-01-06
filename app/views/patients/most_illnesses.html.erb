@@ -1,10 +1,6 @@
 <%= render 'web_links' %>
 
 <h1>All Patients</h1>
-<%= form_tag("/patients", method: 'get') do %>
-<%= label_tag(:q, "Search for:") %>
-<%= text_field_tag(:q) %>
-<%= submit_tag("Search") %>
 
 <h2> Patients Ordered by most illnesses </h2>
      <ul>
@@ -13,4 +9,3 @@
      -- Number of illnesses <%= patient.illnesses.count %></li>
      <% end %>
      </ul>
-<% end %> 

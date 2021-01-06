@@ -2,6 +2,7 @@ class IllnessesController < ApplicationController
   include ApplicationHelper  
   before_action :set_illness, only: [:show, :edit, :update, :destroy]
   before_action :set_patient
+  
   def new
     if params[:patient_id]
       @patient = Patient.find_by(id: params[:patient_id])
