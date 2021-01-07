@@ -15,7 +15,9 @@
         </ul>
       </div>
     <% end %>
+    
 
+    <% f.collection_select(:title, Category.all, :title, :title) %>
       <%= f.label :illness, "Illness Description"%>
       <%= f.text_field :illness %> 
 
@@ -30,6 +32,8 @@
             <%= m.number_field :quantity %><br><br>
             <%= m.submit "submit" %>
             <% end %>
+<% end %>
+
 
   
        <% end %> 

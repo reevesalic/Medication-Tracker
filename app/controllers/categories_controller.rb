@@ -8,9 +8,19 @@ class CategoriesController < ApplicationController
           @categories = Category.all
      end
 
+     def new
+          binding.pry
+          @category = Category.illness.build
+          
+          # @illness = @patient.illnesses.build
+     end
+
+     def create
+
+     end
      private
      def category_params
           params.require(:category).permit(:title, illnesses_attributes: [:id, :illness, :patient_id])
-        end
+     end
 end
 

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :illnesses
     
   end
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :show, :new, :edit]
   resources :users, only: [:new, :show]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

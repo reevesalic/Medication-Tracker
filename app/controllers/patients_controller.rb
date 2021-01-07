@@ -22,7 +22,7 @@ class PatientsController < ApplicationController
   end
 
   def index
-    @patients = Patient.patient_meds
+    @patients = Patient.patient_meds.most_illnesses
   end
 
   def most_illnesses
