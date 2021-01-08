@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hospitals
  get '/' => 'sessions#welcome'
  get '/login' => 'sessions#new'
  post '/login' => 'sessions#create'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
     resources :illnesses
     
   end
-
+  resources :hospitals, only: [:index, :show]
   resources :users, only: [:new, :show]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
